@@ -1,20 +1,123 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: aquamarine;
-  align-items: center;
-}
-.logo {
-  height: 50px;
-  width: 50px;
+/* Navbar.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-ul {
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background: #333;
+  height: 60px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 }
-ul li {
-  list-style-type: none;
-  margin-right: 10px;
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1500px;
+  padding: 0 24px;
 }
-/* flex --> block to inline */
-/* grid --> inline to block  */
+
+.navbar-brand {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+}
+
+.nav-item {
+  height: 60px;
+}
+
+.nav-links {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links:hover {
+  background-color: #575757;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+
+/* Mobile view */
+@media screen and (max-width: 768px) {
+  .NavbarItems {
+    position: relative;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: #333;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-links {
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav-links:hover {
+    background-color: #575757;
+    border-radius: 0;
+  }
+}

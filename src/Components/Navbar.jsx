@@ -1,32 +1,56 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
-function Header() {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <>
-      <div className="navbar">
-        <div>
-          {/* logo */}
-          {/* inline, internal, external */}
-          {/* inline, external */}
-          <img
-          className="logo"
-            src="https://cdn.pixabay.com/photo/2019/11/26/17/34/helicopter-4655049_640.jpg"
-            alt=""
-          />
+    <nav className="navbar">
+      <div className="navbar-container">
+        <div className="navbar-brand">Logo</div>
+        <div className="menu-icon" onClick={toggleNavbar}>
+          <i className={isOpen ? <FaTimes/> : <FaBars/>}>
+            {
+              isOpen? (
+                <FaTimes className="menu-icon-close"/>
+              ) : (
+                <FaBars className="menu-icon-open"/>
+              )
+            }
+          </i>
         </div>
-        <div className="items">
-          {/* nav items */}
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>Contact</li>
-          </ul>
-        </div>
+        <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
+          <li className="nav-item">
+            <Link to="/" className="nav-links">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/services" className="nav-links">
+              Services
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about"  className="nav-links">
+              About
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/contact" className="nav-links">
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
-    </>
+    </nav>
   );
-}
+};
 
-export default Header;
-// export and import
-// fragments
+export default Navbar;
+
